@@ -116,7 +116,7 @@ kdiff[kdiff >  19.999] =  19.999
 kdiff[kdiff < -19.999] = -19.999
 
 # Plot and save to file
-fig = plt.figure(figsize=(8,6))
+fig = plt.figure(figsize=(8,7))
 ax = fig.add_subplot(111,xlim=(0,2*np.pi),ylim=(0,duration))
 plt.contourf(phi,time,kdiff,np.arange(-20,21,1),cmap=cm.bwr)
 plt.colorbar(ticks=range(-20,24,4))
@@ -125,7 +125,7 @@ plt.xlabel('Phase [rad]',fontsize=16)
 plt.ylabel('Time [s]',fontsize=16)
 plt.xticks(np.arange(0,2.5*np.pi,0.5*np.pi))
 ax.set_xticklabels([r'$0$',r'$\pi/2$',r'$\pi$',r'$3\pi/2$',r'$2\pi$'])
-plt.title(r'$k_{short}$ change [%], $k_{long} = $'+'%3.1f'%k_l+', $a_{long} = $'+'%3.1f'%a+', $k_{short} = $'+'%3i'% int(k0),fontsize=16)
+plt.title(r'$k_{short}$ change [%], $k_{long} = $'+'%3.1f'%k_l+', $a_{long} = $'+'%4.1f'%a+', $k_{short} = $'+'%3i'% int(k0),fontsize=16)
 plt.grid(True)
-plt.savefig('kshort_kl='+'%3.1f'%k_l+'_a='+'%3.1f'%a+'_ks='+'%3.3i'% int(k0)+'.png',dpi=100)
+plt.savefig('kshort_kl='+'%3.1f'%k_l+'_a='+'%4.1f'%a+'_ks='+'%3.3i'% int(k0)+'.png',dpi=100)
 plt.close(fig)
