@@ -96,6 +96,7 @@ def rk4( f, x0, t ):
 
     return x
 
+
 phi = np.linspace(0,2*np.pi,1e2,endpoint=False) # phase space [rad]
 g = 9.8 # gravitational acceleration [m s^-2]
 x = phi/k_l # physical space [m]
@@ -107,6 +108,8 @@ k = np.ones(x.size)*k0
 
 # integrate short wavenumber in time
 knew = rk4(integrand,k,time)
+
+print k_l,a,np.min(knew),np.max(knew),np.mean(knew)
 
 # calculate the position of swell crest in physical space and recast to phase space
 crest = crest_position(x,time,a,k_l,np.sqrt(g*k_l))*k_l
@@ -125,7 +128,7 @@ plt.xlabel('Phase [rad]',fontsize=16)
 plt.ylabel('Time [s]',fontsize=16)
 plt.xticks(np.arange(0,2.5*np.pi,0.5*np.pi))
 ax.set_xticklabels([r'$0$',r'$\pi/2$',r'$\pi$',r'$3\pi/2$',r'$2\pi$'])
-plt.title(r'$k_{short}$ change [%], $k_{long} = $'+'%3.1f'%k_l+', $a_{long} = $'+'%4.1f'%a+', $k_{short} = $'+'%3i'% int(k0),fontsize=16)
+plt.title(r'$k_{short}$ change [%], $k_{long} = $'+'%3.1f'%k_l+', $a_{long} = $'+'%5.3f'%a+', $k_{short} = $'+'%3i'% int(k0),fontsize=16)
 plt.grid(True)
-plt.savefig('kshort_kl='+'%3.1f'%k_l+'_a='+'%4.1f'%a+'_ks='+'%3.3i'% int(k0)+'.png',dpi=100)
+plt.savefig('kshort_kl='+'%3.1f'%k_l+'_a='+'%5.3f'%a+'_ks='+'%3.3i'% int(k0)+'.png',dpi=100)
 plt.close(fig)
