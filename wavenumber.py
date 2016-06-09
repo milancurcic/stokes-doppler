@@ -85,7 +85,7 @@ def rk4( f, x0, t ):
                 an array of arrays.
     """
     n = len( t )
-    x = numpy.array( [ x0 ] * n )
+    x = np.array( [ x0 ] * n )
     for i in xrange( n - 1 ):
         h = t[i+1] - t[i]
         k1 = h * f( x[i], t[i] )
