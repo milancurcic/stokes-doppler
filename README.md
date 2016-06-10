@@ -4,6 +4,23 @@ Doppler-shifting of short water waves by swell-induced orbital motion
 
 ### Results
 
+* Each panel shows a combination of swell wavenumber value 
+and swell amplitude values.
+
+* Swell wavenumbers increase from top to bottom, 
+with values of 0.5, 1, 2, 4, and 6 `rad/m`.
+
+* Swell amplitude increase from left to right,
+with values of 0.001, 0.01, and 0.1 m.
+
+* The panels that don't show the contoured field all the way to the 
+top went numerically unstable.
+
+* The dotted line indicates the position of swell crest (starts at pi/2).
+
+* The x-axis says Phase and ranges from 0 to 2pi, but this is 
+really initial phase, and corresponds to physical space.
+
 <p>
 <img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D0.5_a%3D0.001_ks%3D060.png" width="250">
 <img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D0.5_a%3D0.010_ks%3D060.png" width="250">
@@ -16,3 +33,20 @@ Doppler-shifting of short water waves by swell-induced orbital motion
 <img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D1.0_a%3D0.100_ks%3D060.png" width="250">
 </p>
 
+<p>
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D2.0_a%3D0.001_ks%3D060.png" width="250">
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D2.0_a%3D0.010_ks%3D060.png" width="250">
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D2.0_a%3D0.100_ks%3D060.png" width="250">
+</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D4.0_a%3D0.001_ks%3D060.png" width="250">
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D4.0_a%3D0.010_ks%3D060.png" width="250">
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D4.0_a%3D0.100_ks%3D060.png" width="250">
+</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D6.0_a%3D0.001_ks%3D060.png" width="250">
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D6.0_a%3D0.010_ks%3D060.png" width="250">
+<img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D6.0_a%3D0.100_ks%3D060.png" width="250">
+</p>
