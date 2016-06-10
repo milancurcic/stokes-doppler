@@ -4,17 +4,17 @@ Doppler-shifting of short water waves by swell-induced orbital motion
 
 ### Results
 
-* Each panel shows a combination of swell wavenumber value 
-and swell amplitude values.
-
-* Swell wavenumbers increase from top to bottom, 
-with values of 0.5, 1, 2, 4, and 6 `rad/m`.
-
-* Swell amplitude increase from left to right,
+* Each panel shows a relative change (%) of the short wavenumber, 
+for combination of swell wavenumber value and swell amplitude values.
+Swell wavenumbers increase from top to bottom, 
+with values of 0.5, 1, 2, 4, and 6 rad/m.
+Swell amplitude increase from left to right,
 with values of 0.001, 0.01, and 0.1 m.
 
 * The panels that don't show the contoured field all the way to the 
-top went numerically unstable.
+3 panels in the bottom right corner) top went numerically unstable.
+Reducing the time step by a factor of 10 does not help. Will do more 
+research on this.
 
 * The dotted line indicates the position of swell crest (starts at pi/2).
 
