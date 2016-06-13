@@ -15,12 +15,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-def u_l(x,t,a,k,omega):
+def u_l(x,z,t,a,k,omega):
     """
-    Returns the long wave horizontal velocity at z = 0.
+    Returns the long wave horizontal velocity at input level z.
     """
-    return a*k*omega*np.sin(k*x-omega*t)
-
+    return a*k*omega*np.sin(k*x-omega*t)*np.exp(k*z)
 
 def eta(x,t,a,k,omega):
     """
@@ -49,7 +48,7 @@ def omega(g,k,u,sigma=0.07,rho=1e3):
     return np.sqrt(g*k + sigma/rho*k**3) + k*u
 
 def integrand(k,t):
-    return -diff(omega(g,k,u_l(x,t,a,k_l,np.sqrt(g*k_l))),periodic=True)/diff(x)
+    return -diff(omega(g,k,u_l(x,eta(x,t,a,k_l,np.sqrt(g*k_l)),t,a,k_l,np.sqrt(g*k_l))),periodic=True)/diff(x)
 
 def crest_position(x,t,a,k,omega):
     return np.array([x[np.argmax(eta(x,t[n],a,k,omega))] for n in range(t.size)])
