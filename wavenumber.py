@@ -19,7 +19,13 @@ def u_l(x,z,t,a,k,omega):
     """
     Returns the long wave horizontal velocity at input level z.
     """
-    return a*k*omega*np.sin(k*x-omega*t)*np.exp(k*z)
+    return a*omega*np.sin(k*x-omega*t)*np.exp(k*z)
+
+def stokes_drift(x,a,k,omega):
+    """
+    Returns the surface Stokes drift.
+    """
+    return np.mean(u_l(x,eta(x,0,a,k,omega),0,a,k,omega))
 
 def eta(x,t,a,k,omega):
     """
@@ -114,15 +120,28 @@ print k_l,a,np.min(knew),np.max(knew),np.mean(knew)
 crest = crest_position(x,time,a,k_l,np.sqrt(g*k_l))*k_l
 
 kdiff = knew/k*100-100
-kdiff[kdiff >  19.999] =  19.999
-kdiff[kdiff < -19.999] = -19.999
+kdiff[kdiff >  29.999] =  29.999
+kdiff[kdiff < -29.999] = -29.999
+
+# Evaluate short wave group velocity and propagation line
+cg = 0.5*np.sqrt(g/k0)
+crest_short = 0.5*np.pi+cg*time*k_l
+
+# Evaluate long wave Stokes drift and propagation line
+stokes_long = stokes_drift(x,a,k_l,np.sqrt(g*k_l))
+stokes_line = 0.5*np.pi+stokes_long*time*k_l
+
+cg_plus_stokes_line = 0.5*np.pi+(cg+stokes_long)*time*k_l
 
 # Plot and save to file
 fig = plt.figure(figsize=(8,7))
 ax = fig.add_subplot(111,xlim=(0,2*np.pi),ylim=(0,duration))
-plt.contourf(phi,time,kdiff,np.arange(-20,21,1),cmap=cm.bwr)
-plt.colorbar(ticks=range(-20,24,4))
+plt.contourf(phi,time,kdiff,np.arange(-30,31,1),cmap=cm.bwr)
+plt.colorbar(ticks=range(-30,35,5))
 plt.plot(crest,time,'k.',ms=1)
+plt.plot(crest_short,time,'k--',lw=2)
+plt.plot(stokes_line,time,'c--',lw=2)
+plt.plot(cg_plus_stokes_line,time,'m--',lw=2)
 plt.xlabel('Phase [rad]',fontsize=16)
 plt.ylabel('Time [s]',fontsize=16)
 plt.xticks(np.arange(0,2.5*np.pi,0.5*np.pi))
