@@ -16,10 +16,17 @@ with values of 0.05, 0.075, and 0.1 m.
 Reducing the time step by a factor of 10 does not help. Will do more 
 research on this.
 
-* The dotted line indicates the position of swell crest (starts at pi/2).
-
 * The x-axis says Phase and ranges from 0 to 2pi, but this is 
 really initial phase, and corresponds to physical space.
+
+* The black dotted line indicates the position of swell crest (starts at pi/2).
+
+* The black dashed line is sloped with the short wave group velocity.
+
+* The cyan dashed line is sloped with the swell Stokes drift.
+
+* The magenta dashed line is sloped with the swell Stokes drift plus 
+short wave group velocity.
 
 <p>
 <img src="https://raw.githubusercontent.com/milancurcic/stokes-doppler/master/figures/kshort_kl%3D1.0_a%3D0.050_ks%3D110.png" width="250">
