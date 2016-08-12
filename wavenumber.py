@@ -21,6 +21,21 @@ def u_l(x,z,t,a,k,omega):
     """
     return a*omega*np.sin(k*x-omega*t)*np.exp(k*z)
 
+def u_layer(x,z1,z2,t,a,k,omega):
+    """
+    Returns the long wave horizontal velocity averaged from z = z1 to z = z2,
+    where z1 and z2 are negative-downward displacements from the surface,
+    and z1 < z2.
+    """
+    return a*omega*np.sin(k*x-omega*t)*(np.exp(k*z2)-np.exp(k*z1))/((z2-z1)*k)
+
+def z_eff(k):
+    """
+    Returns the effective depth (negative downward) of a wave given its
+    wavenumber k.
+    """
+    return -0.5/k
+
 def stokes_drift(x,a,k,omega):
     """
     Returns the surface Stokes drift.
@@ -55,6 +70,11 @@ def omega(g,k,u,sigma=0.07,rho=1e3):
 
 def integrand(k,t):
     return -diff(omega(g,k,u_l(x,eta(x,t,a,k_l,np.sqrt(g*k_l)),t,a,k_l,np.sqrt(g*k_l))),periodic=True)/diff(x)
+
+def integrand_layer_average(k,t):
+    z2 = eta(x,t,a,k_l,np.sqrt(g*k_l))
+    z1 = eta(x,t,a,k_l,np.sqrt(g*k_l))+z_eff(k)
+    return -diff(omega(g,k,u_layer(x,z1,z2,t,a,k_l,np.sqrt(g*k_l))),periodic=True)/diff(x)
 
 def crest_position(x,t,a,k,omega):
     return np.array([x[np.argmax(eta(x,t[n],a,k,omega))] for n in range(t.size)])
@@ -112,7 +132,8 @@ time = np.arange(0,duration+dt,dt)
 k = np.ones(x.size)*k0
 
 # integrate short wavenumber in time
-knew = rk4(integrand,k,time)
+#knew = rk4(integrand,k,time)
+knew = rk4(integrand_layer_average,k,time)
 
 print k_l,a,np.min(knew),np.max(knew),np.mean(knew)
 
